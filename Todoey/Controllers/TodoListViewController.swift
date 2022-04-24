@@ -41,11 +41,11 @@ class TodoListViewController: SwipeTableViewController{
             
             if let navBarColor = UIColor(hexString: colorHex) {
                 
-                navBar.barTintColor = navBarColor
+                navBar.backgroundColor = navBarColor
                 
                 navBar.tintColor = ContrastColorOf(navBarColor, returnFlat: true)
                 
-                navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: ContrastColorOf(navBarColor, returnFlat: true)]
+                //navBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: ContrastColorOf(navBarColor, returnFlat: true)]
                 
                 searchBar.barTintColor = navBarColor
             }
@@ -157,7 +157,7 @@ extension TodoListViewController: UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         
-        todoItems = todoItems?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
+        todoItems = todoItems?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "title", ascending: true)
     
         tableView.reloadData()
     }
